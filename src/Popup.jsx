@@ -1,6 +1,7 @@
 import {useState} from "react";
 import Button from "./Button.jsx";
 import {getImage} from "./APIService.js";
+import "./styles/Popup.css"
 
 export default function Popup() {
     const [isLoading, setIsLoading] = useState(false);
@@ -25,12 +26,12 @@ export default function Popup() {
     }
 
     return (
-        <div>
+        <div className="popupContainer">
             <h2>Random image generator extension</h2>
             <div>
-                {isLoading && (<p>Loading...</p>)}
-                {isError && (<p>Sorry, there was an error generating your image, please try again.</p>)}
-                {imgSrc !== "" && (<img alt="Generated image" src={imgSrc}/>)}
+                {isLoading && (<div><span className="loader"></span><p>Loading...</p></div>)}
+                {isError && (<p className="error">Sorry, there was an error generating your image, please try again.</p>)}
+                {imgSrc !== "" && (<img className="image" alt="Generated image" src={imgSrc}/>)}
             </div>
             {timeStamp !== "" && (<div>Last generation: {timeStamp}</div>)}
             <Button onClick={onClick}/>
