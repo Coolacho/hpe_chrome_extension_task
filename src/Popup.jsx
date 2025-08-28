@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Button from "./Button.jsx";
+import {getImage} from "./APIService.js";
 
 export default function Popup() {
     const [isLoading, setIsLoading] = useState(false);
@@ -10,11 +11,15 @@ export default function Popup() {
         setIsError(false);
         setImgSrc("");
         setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false)
-            //setIsError(true)
-            //setImgSrc("https://cdn2.thecatapi.com/images/MTk1NjM4MA.jpg")
-        }, 3000)
+        getImage()
+            .then(res => {
+                setIsLoading(false)
+                setImgSrc(res[0].url)
+            })
+            .catch(() => {
+                setIsLoading(false)
+                setIsError(true)
+            })
     }
 
     return (
