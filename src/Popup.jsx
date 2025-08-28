@@ -29,7 +29,7 @@ export default function Popup() {
         <div className="popupContainer">
             <h2>Random image generator extension</h2>
             <div>
-                {isLoading && (<div><span className="loader"></span><p>Loading...</p></div>)}
+                {isLoading && (<div className="loaderContainer"><span className="loader"></span><p>Loading...</p></div>)}
                 {isError && (<p className="error">Sorry, there was an error generating your image, please try again.</p>)}
                 {imgSrc !== "" && (<img className="image" alt="Generated image" src={imgSrc}/>)}
             </div>
