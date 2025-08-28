@@ -1,8 +1,9 @@
+import Popup from "./Popup.jsx";
 
 function App() {
 
   return (
-      <></>
+      <Popup/>
   )
 }
 
